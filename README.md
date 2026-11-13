@@ -1,35 +1,35 @@
-# KAAVO FIT — Slice 1
+# KAAVO FIT Starter (reconstruction, not original source)
 
-Separate development project for the KAAVO FIT app shell. This is a reconstruction, not the original Meta AI project.
+A new portable React + TypeScript starter based on the handoff text. It is not the original Meta AI source and is not connected to the original deployment or database.
 
 ## Included
-- React 18 + TypeScript + Vite
-- Responsive header and bottom navigation
-- Right-side drawer with Wallet and Rewards only in the drawer
-- English and Hindi (Devanagari) language toggle
-- Light/dark theme toggle
-- Toast messages and empty states
-- No live payments, ads, or backend integration
+- Mobile-first dark emerald/mint/gold UI
+- Today, Workouts, Meals, Track, Habits navigation
+- Water and habit state stored in this browser's localStorage
+- Reconstructed illustrative 2D squat canvas with front/side view, pause/resume, reset, speed selector, basic rep counter
+- Basic English/Hindi toggle
+- Explicit demo-only notices for premium, login, tracking and local data
 
-## Run locally
-Requires Node.js 20 or later.
+## Not production-ready
+No real authentication/OTP, multi-user backend, database migration, server-side authorization, payments, ad network, health integrations, all-70-exercise animation set, native app builds, or original source code.
 
-```bash
+## Run
+Requires Node.js 20+ and npm:
+```sh
 npm install
 npm run dev
 ```
-
-Open the local URL printed by Vite.
-
-## Production build check
-```bash
+For a production build:
+```sh
 npm run build
 npm run preview
 ```
+Open the URL printed by Vite.
 
-## Important limitations
-- This slice is a UI shell only; workout, progress, profile, wallet and rewards content are placeholders.
-- Language/theme are in-memory only and reset after refresh.
-- Uses system fonts; no runtime CDN is required.
-- No backend, analytics, payments, ad SDK, or account system is included.
-- Do not deploy as the final app or connect real payments before full testing and explicit approval.
+## Files
+- `src/App.tsx`: app screens, state, reconstructed squat canvas
+- `src/styles.css`: design tokens and responsive layout
+- `src/main.tsx`: React entry point
+- `index.html`: app HTML entry point
+
+Do not use this demo to collect sensitive user data or accept real payments. Add secure backend authentication, per-user authorization, secret management, backups, data export/deletion and tests before launch.

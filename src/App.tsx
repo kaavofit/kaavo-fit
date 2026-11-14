@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import {Activity,Apple,Check,Flame,GlassWater,House,Languages,Menu,Pause,Play,RotateCcw,Sparkles,Trophy,Weight,Timer,X, ShoppingBag} from 'lucide-react';
+import {Activity,Apple,Check,Dumbbell,Flame,GlassWater,House,Languages,Menu,Pause,Play,RotateCcw,Sparkles,Trophy,Weight,Timer,X, ShoppingBag} from 'lucide-react';
 type Tab='Today'|'Workouts'|'Meals'|'Track'|'Habits'| 'Shop'
 function Squat({running,speed,view,onRep,resetKey}:{running:boolean;speed:number;view:string;onRep:()=>void;resetKey:number}){
  const ref=useRef<HTMLCanvasElement>(null);

@@ -43,3 +43,12 @@ nav button{
   min-width: 0 !important;
   flex: 1 1 0 !important;
 }
+nav{
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  flex-wrap: nowrap !important;
+}
+nav button{
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+}

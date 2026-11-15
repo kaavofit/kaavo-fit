@@ -9,6 +9,10 @@ export const translations = {
     dashboard: "Home",
     workouts: "Workouts",
     progress: "Progress",
+    meals: "Meals",
+   habits: "Habits",
+   shop: "Shop",
+
     profile: "Profile",
     menu: "Menu",
     close: "Close",
@@ -44,6 +48,10 @@ export const translations = {
     dashboard: "होम",
     workouts: "वर्कआउट",
     progress: "प्रगति",
+    meals: "भोजन",
+   habits: "आदतें",
+   shop: "दुकान",
+
     profile: "प्रोफ़ाइल",
     menu: "मेन्यू",
     close: "बंद करें",

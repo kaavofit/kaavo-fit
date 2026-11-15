@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import {
-  Activity, Award, ChevronRight, CircleHelp, Dumbbell, Home, Menu,
-  Moon, Sun, UserRound, Wallet, X, Languages, Settings2, Sparkles
+  Activity, Apple, Award, Check, ChevronRight, CircleHelp, Dumbbell, Home, Menu,
+  Moon, ShoppingBag, Sun, UserRound, Wallet, X, Languages, Settings2, Sparkles, type LucideIcon,
 } from "lucide-react";
 import { translations, type Language, type TranslationKey } from "./i18n";
 
 type Theme = "light" | "dark";
-type Section = "dashboard" | "workouts" | "progress" | "profile";
+type Section = "dashboard" | "workouts" | "meals" | "progress" | "habits" | "shop";
 
 export default function App() {
   const [language, setLanguage] = useState<Language>("en");
   const [theme, setTheme] = useState<Theme>("dark");
   const [section, setSection] = useState<Section>("dashboard");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [toast, setToast] = useState("");
-
   const t = (key: TranslationKey) => translations[language][key];
+const [toast, setToast] = useState("");
 
   useEffect(() => {
     document.documentElement.lang = language === "hi" ? "hi" : "en";
@@ -36,10 +35,12 @@ export default function App() {
   };
 
   const navItems: { id: Section; icon: typeof Home; label: TranslationKey }[] = [
-    { id: "dashboard", icon: Home, label: "dashboard" },
-    { id: "workouts", icon: Dumbbell, label: "workouts" },
-    { id: "progress", icon: Activity, label: "progress" },
-    { id: "profile", icon: UserRound, label: "profile" },
+{ id: "dashboard", icon: Home, label: "dashboard" },
+{ id: "workouts", icon: Dumbbell, label: "workouts" },
+{ id: "meals", icon: Apple, label: "meals" },
+{ id: "progress", icon: Activity, label: "progress" },
+{ id: "habits", icon: Check, label: "habits" },
+{ id: "shop", icon: ShoppingBag, label: "shop" },
   ];
 
   useEffect(() => {

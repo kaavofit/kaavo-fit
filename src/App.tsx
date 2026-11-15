@@ -295,11 +295,11 @@ export default function App() {
         )}
       </main>
 
-      <nav style={{display: 'flex', overflowX: 'auto', flexWrap: 'nowrap'}}>
+       <div className="kv-tabbar">
         {names.map((n, i) => (
           <button key={n} className={tab === n ? 'active' : ''} onClick={() => setTab(n)}>{icons[i]}<span>{n}</span></button>
         ))}
-      </nav>
+      </div>
       <footer>{t('DEMO MODE · DATA SAVED IN THIS BROWSER', 'डेमो मोड · डेटा इसी ब्राउज़र में सेव है')}</footer>
 
       {drawer && (

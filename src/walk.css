@@ -1,0 +1,14 @@
+/* ---- Track: walk tracker & health (kw-) ---- */
+.kw-live{margin:12px 0 4px}.kw-live .kw-u{font:500 10px 'DM Sans';color:var(--muted)}
+.kw-gps{font-size:10px;color:var(--muted);margin:6px 0}.kw-gps.bad{color:#f0a58f}.kw-ok{font-size:10px;color:var(--mint);margin:6px 0}
+.kw-route{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:15px;background:#10271b;margin:10px 0 4px}
+.kw-weight{display:flex;flex-direction:column;gap:6px;font-size:10px;color:var(--muted);margin-top:12px}
+.kw-input{background:#10271b;border:1px solid var(--border);border-radius:10px;padding:9px 10px;color:var(--text,#eef5ef);font:inherit;font-size:13px;width:100%}
+.kw-input[aria-invalid="true"]{border-color:#f0a58f}
+.kw-input:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.kw-row{border-top:1px solid var(--border);margin-top:8px;padding-top:6px}.kw-row:first-of-type{border-top:0}
+.kw-head{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;background:none;border:0;padding:8px 0;font-size:11px;color:var(--muted);text-align:left}
+.kw-head b{color:var(--mint);font-size:13px}
+.kw-detail{padding:4px 0 8px}.kw-detail .stats{margin:6px 0 2px}
+.kw-del{margin-top:6px;color:#f0a58f}.kw-del.sure{background:#4a2a22;border-color:#f0a58f}
+button:disabled{opacity:.55;cursor:default}

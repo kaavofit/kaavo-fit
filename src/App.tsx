@@ -1,3 +1,6 @@
+import WalkTracker from './WalkTracker';
+import HealthCard from './HealthCard';
+import {useHealth} from './health';
 import DietBrowser from './DietBrowser';
 import WorkoutBrowser from './WorkoutBrowser';
 import Trainer3D from './Trainer3D';
@@ -127,6 +130,7 @@ export default function App() {
   const [reps, setReps] = useState(0);
   const [resetKey, setResetKey] = useState(0);
   const [drawer, setDrawer] = useState(false);
+  const health = useHealth();
 
   useEffect(() => safeSet('kf-water', String(water)), [water]);
   useEffect(() => safeSet('kf-habits', JSON.stringify(habits)), [habits]);
@@ -276,13 +280,22 @@ export default function App() {
         ) : tab === 'Track' ? (
           <>
             <h1>{title}</h1>
-            <p>{t('Tracking is local to this browser in the starter.', 'ट्रैकिंग सिर्फ इसी ब्राउज़र में सेव होती है।')}</p>
+            <p>{t('Walks and tracking are saved on this device.', 'वॉक और ट्रैकिंग इसी डिवाइस पर सेव होती हैं।')}</p>
             <div className="stats two">
-              {[[t('Water', 'पानी'), water + ' ml'], [t('Weight', 'वज़न'), '— kg'], [t('Steps', 'कदम'), '—'], [t('Sleep', 'नींद'), '— h']].map(([a, b]) => (
-                <div className="card" key={a}><small>{a}</small><b>{b}</b><label>{t('Not connected', 'कनेक्ट नहीं है')}</label></div>
+              {[
+                [t('Water', 'पानी'), water + ' ml'],
+                [t('Weight', 'वज़न'), '— kg'],
+                [t('Steps', 'कदम'), health.snapshot?.steps != null ? String(health.snapshot.steps) : '—',
+                  health.snapshot?.steps != null ? t('From ', '') + health.snapshot.source + t('', ' से') : ''],
+                [t('Sleep', 'नींद'), '— h']
+              ].map(([a, b, c]) => (
+                <div className="card" key={a}><small>{a}</small><b>{b}</b><label>{c || t('Not connected', 'कनेक्ट नहीं है')}</label></div>
               ))}
             </div>
-            <div className="card notice">{t('Demo only. No Apple Health, Health Connect or remote database integration.', 'सिर्फ डेमो। Apple Health, Health Connect या रिमोट डेटाबेस नहीं जुड़ा है।')}</div>
+            <WalkTracker t={t} hi={hi} />
+            <h2>{t('Health sync', 'हेल्थ सिंक')}</h2>
+            <HealthCard t={t} health={health} />
+            <div className="card notice">{t('Health sync works only in the installed app and only when you tap Sync. Nothing is uploaded or shared.', 'हेल्थ सिंक सिर्फ़ इंस्टॉल किए गए ऐप में और सिंक दबाने पर ही चलता है। कुछ भी अपलोड या साझा नहीं होता।')}</div>
           </>
 
         ) : (

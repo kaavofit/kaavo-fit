@@ -56,3 +56,5 @@ nav{width:100% !important;max-width:100% !important;box-sizing:border-box !impor
 .kv-tabbar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(6,1fr);background:#0f2219;padding:6px 2px;z-index:50}
 .kv-tabbar button{display:flex;flex-direction:column;align-items:center;min-width:0;background:none;border:0;color:#9fb5a8;font-size:10px}
 .kv-tabbar button.active{color:#e0c068}
+
+

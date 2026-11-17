@@ -1,3 +1,6 @@
+import DietBrowser from './DietBrowser';
+import WorkoutBrowser from './WorkoutBrowser';
+import Trainer3D from './Trainer3D';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {Activity, Apple, CheckCircle2, Dumbbell, Flame, GlassWater, Home, Languages, Menu, Pause, Play, RotateCcw, Sparkles, Trophy, X, ShoppingBag} from 'lucide-react';
 
@@ -111,7 +114,9 @@ function Squat({running, speed, view, onRep, resetKey}: {running: boolean; speed
 
 /* ---------- App ---------- */
 export default function App() {
-  const [tab, setTab] = useState<Tab>('Today');
+    const [tab, setTabRaw] = useState<Tab>((localStorage.getItem('kaavoTab') as Tab) || 'Today');
+  const setTab = (n: any) => { setTabRaw(n); localStorage.setItem('kaavoTab', n); };
+
   const [lang, setLang] = useState(false);
   const [water, setWater] = useState(readWater);
   const [habits, setHabits] = useState<boolean[]>(readHabits);
@@ -212,13 +217,14 @@ export default function App() {
             <small className="eyebrow">{t('MOVE WITH PURPOSE', 'मकसद के साथ चलो')}</small>
             <h1>{title}</h1>
             <p>{t('Train consistently. Progress patiently.', 'नियमित ट्रेन करो। धैर्य से आगे बढ़ो।')}</p>
-            <h2>{t('Workout trainer', 'वर्कआउट ट्रेनर')} <small>2D DEMO</small></h2>
+            {false && (<>
+<h2>{t('Workout trainer', 'वर्कआउट ट्रेनर')} <small>2D DEMO</small></h2>
             <div className="card">
               <div className="between">
                 <div><small className="gold">{t('LOWER BODY', 'लोअर बॉडी')}</small><h3>{t('Squat · Phase 1', 'स्क्वाट · फेज़ 1')}</h3></div>
                 <b className="gold">{reps} {t('reps', 'रेप्स')}</b>
               </div>
-              <Squat running={run} speed={speed} view={view} onRep={onRep} resetKey={resetKey} />
+              <Trainer3D running={run} speed={speed} view={view} onRep={onRep} resetKey={resetKey} />
               <div className="between">
                 <div className="seg">
                   <button className={view === 'front' ? 'selected' : ''} onClick={() => setView('front')}>{t('Front', 'सामने')}</button>
@@ -235,8 +241,9 @@ export default function App() {
                 <button onClick={() => { setRun(false); setReps(0); setResetKey(v => v + 1); }}><RotateCcw size={15} /> {t('Reset', 'रीसेट')}</button>
               </div>
               <p className="note">{t('Illustrative 2D movement demo, not a certified form assessment.', 'यह सिर्फ एक 2D डेमो है, प्रमाणित फॉर्म जाँच नहीं।')}</p>
-            </div>
-            <h2>{t('Explore programs', 'प्रोग्राम देखो')}</h2>
+            </div></>)}
+
+            <WorkoutBrowser /><h2>{t('Explore programs', 'प्रोग्राम देखो')}</h2>
             <div className="card">
               <b>{t('Foundation · Beginner', 'फ़ाउंडेशन · शुरुआती')}</b>
               <p>{t('Build a consistent base.', 'एक मज़बूत बुनियाद बनाओ।')}</p>
@@ -256,8 +263,9 @@ export default function App() {
                 <div><small>{t('Protein', 'प्रोटीन')}</small><b>—</b><label>{t('Not configured', 'सेट नहीं है')}</label></div>
                 <div><small>{t('Meals', 'भोजन')}</small><b>0 / 4</b><label>{t('Log meals', 'भोजन दर्ज करो')}</label></div>
               </div>
-            </div>
-            <h2>{t('Diet plans', 'डाइट प्लान')}</h2>
+             </div>
+            <DietBrowser />
+             <h2>{t('Diet plans', 'डाइट प्लान')}</h2>
             <div className="card">
               <b>{t('Balanced Indian vegetarian', 'संतुलित भारतीय शाकाहारी')}</b>
               <p>{t('Flexible everyday meals.', 'रोज़ के आसान भोजन।')}</p>
